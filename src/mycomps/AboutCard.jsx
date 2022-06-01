@@ -3,7 +3,7 @@ import {BsLinkedin,BsGithub} from 'react-icons/bs'
 
 export const AboutCard = (props) => {
   return (
-    <div className='w-[25vw] opacity-90'>
+    <div className='w-[20vw] opacity-90 mb-[2em]'>
         <div class="max-w-sm bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
         <div class="flex justify-end px-4 pt-4"></div>
         <div class="flex flex-col items-center pb-10">
