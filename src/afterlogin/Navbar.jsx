@@ -3,10 +3,6 @@ import {MA} from "./MA";
 import {CA} from "./CA";
 import {Public} from "./Public";
 
-
-
-
-
 export const Navbar = () => {
   const [selected, setSelected] = React.useState(1);
   const [admintype, setAdminType] = React.useState("CA");
