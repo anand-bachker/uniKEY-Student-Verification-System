@@ -1,6 +1,6 @@
 import React from "react";
 
-export const Description = () => {
+export const AppLink = () => {
   return (
     <div className=" flex justify-center items-center ">
     <div className="w-[70vw]">
