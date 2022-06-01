@@ -14,7 +14,7 @@ import {Navbar as ALNavbar} from "./afterlogin/Navbar";
 
 function App() {
 
-  const isLoggined=true;
+  const isLoggined=false;
 
   return (
     <>
