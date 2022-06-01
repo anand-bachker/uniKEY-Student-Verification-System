@@ -13,7 +13,7 @@ export const AboutUs = () => {
     },
     {
       name: "Saatvik",
-      img: "",
+      img: "Saatvik.png",
       tag: "Full Stack Developer",
       desc: "I am beta male",
       github: "https://github.com/saatvik333",
@@ -29,7 +29,12 @@ export const AboutUs = () => {
     },
   ];
 
-  return <div>
+  return <div id="About">
+    <div className="w-full flex justify-center items-center mb-[40px]">
+      <div className="text-[50px] font-bold text-white">
+            Our Team
+      </div>
+    </div>
     <div className="w-full flex justify-center">
     <div className="flex flex-row space-x-10 items-center">
   {devs.map((value)=>{
