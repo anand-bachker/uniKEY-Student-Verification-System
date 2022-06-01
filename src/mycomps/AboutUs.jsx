@@ -30,7 +30,7 @@ export const AboutUs = () => {
   ];
 
   return <div id="About">
-    <div className="w-full flex justify-center items-center mb-[40px]">
+    <div className="w-full flex justify-center items-center mb-[1em] mt-[1em]">
       <div className="text-[50px] font-bold text-white">
             Our Team
       </div>
