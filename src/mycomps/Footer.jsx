@@ -68,7 +68,7 @@ export const Footer = () => {
           </span>
           <div class="flex mt-4 space-x-6 sm:justify-center sm:mt-0">
             <a
-              href="./"
+              href="https://github.com/anand-bachker/minor_blockchain"
               class="text-gray-500 hover:text-gray-900 dark:hover:text-white"
             >
               <svg
