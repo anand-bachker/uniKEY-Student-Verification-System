@@ -1,7 +1,7 @@
 import React from "react";
-import {MA} from "./MA";
-import {CA} from "./CA";
-import {Public} from "./Public";
+import {MA} from "../mycomps/MA";
+import {CA} from "../mycomps/CA";
+import {Public} from "../mycomps/Public";
 
 export const Navbar = () => {
   const [selected, setSelected] = React.useState(1);

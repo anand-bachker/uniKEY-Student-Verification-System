@@ -1,45 +1,28 @@
-import "./App.css";
-import { AboutUs as BLAboutUs } from "./mycomps/AboutUs";
-import { AppLink as BLAppLink } from "./mycomps/AppLink";
-import { Footer as BLFooter } from "./mycomps/Footer";
-import { Homepage as BLHomePage } from "./mycomps/Homepage";
-import {Navbar as BLNavbar} from "./mycomps/Navbar";
-
-
-import {Navbar as ALNavbar} from "./afterlogin/Navbar";
-
-
-
-
+import { Navbar } from "./mycomps/Navbar";
+import { Homepage } from "./mycomps/Homepage";
+import { AppLink } from "./mycomps/AppLink";
+import { AboutUs } from "./mycomps/AboutUs";
+import { Footer } from "./mycomps/Footer";
+import { CA } from "./mycomps/CA";
+import { MA } from "./mycomps/MA";
+import { Public } from "./mycomps/Public";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
 function App() {
-
-  const isLoggined=false;
-
   return (
     <>
-    <div className={`${isLoggined?"hidden":""}`}>
-
-      <BLNavbar/>
-      <BLHomePage/>
-      <BLAppLink/>
-      <BLAboutUs/>
-      <BLFooter/>
-
-    </div>
-
-    <div className={`${isLoggined?"":"hidden"}`}>
-      <ALNavbar/>
-
-    </div>
-
-
-
-
-
-
-
-
+      <Router>
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<><Homepage />
+            <AppLink />
+            <AboutUs /></>} />
+          <Route path="public" element={<><Public /></>} />
+          <Route path="admin" element={<><MA /></>} />
+          <Route path="college" element={<><CA /></>} />
+        </Routes>
+        <Footer />
+      </Router>
     </>
   );
 }
