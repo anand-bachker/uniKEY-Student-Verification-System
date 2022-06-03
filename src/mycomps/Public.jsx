@@ -2,7 +2,7 @@ import React from "react";
 import { useState } from "react";
 import { ethers } from "ethers";
 import StudentVerificationSystem from "../artifacts/contracts/StudentVerificationSystem.sol/StudentVerificationSystem.json";
-const StudentVerificationSystemAddress = "0x938292a760EA13e6386Cd04F212350D025AA3C5e";
+const StudentVerificationSystemAddress = "0xb6C57b724A70ABccDB28aadEe7f060A242E8F127";
 
 export const Public = () => {
   const [collegeUniqueID, setCollegeUniqueID] = useState(null);

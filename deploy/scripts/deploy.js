@@ -31,4 +31,4 @@ main()
     process.exit(1);
   });
 
-  // StudentVerificationSystem deployed to: 0x938292a760EA13e6386Cd04F212350D025AA3C5e
+  // StudentVerificationSystem deployed to: 0xb6C57b724A70ABccDB28aadEe7f060A242E8F127
