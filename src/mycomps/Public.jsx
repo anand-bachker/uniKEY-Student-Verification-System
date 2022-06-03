@@ -8,12 +8,10 @@ export const Public = () => {
   const [collegeUniqueID, setCollegeUniqueID] = useState(null);
   const [studentRegistrationNumber, setStudentRegistrationNumber] = useState(null);
 
-  const [data, setData] = useState(null);
-
-  // const [registrationNumber, setRegistrationNumber] = useState(null);
-  // const [hash, setHash] = useState(null);
-  // const [verify, setVerify] = useState(null);
-  // const [timestamp, setTimestamp] = useState(null);
+  const [registrationNumber, setRegistrationNumber] = useState(null);
+  const [hash, setHash] = useState(null);
+  const [verify, setVerify] = useState(null);
+  const [timestamp, setTimestamp] = useState(null);
 
   async function fetchStudentDetails() {
     const provider = new ethers.providers.Web3Provider(window.ethereum);
@@ -26,8 +24,11 @@ export const Public = () => {
       collegeUniqueID,
       studentRegistrationNumber
     );
-    setData(Data);
-    console.log(data);
+    setRegistrationNumber(parseInt(Data[0]));
+    setHash(Data[1]);
+    setVerify(Data[2]);
+    setTimestamp(parseInt(Data[3]));
+    console.log(`\n Registration Number: ${registrationNumber}\n Hash: ${hash}\n Verify: ${verify}\n Timestamp: ${Date(timestamp*1000).toLocaleString()}`);
   }
 
   return (
