@@ -2,9 +2,9 @@ import React from "react";
 import { create } from 'ipfs-http-client'
 import { useState } from "react";
 import { ethers } from "ethers";
-// import StudentVerificationSystem from "../artifacts/contracts/StudentVerificationSystem.sol/StudentVerificationSystem.json";
+import StudentVerificationSystem from "../artifacts/contracts/StudentVerificationSystem.sol/StudentVerificationSystem.json";
 const client = create('https://ipfs.infura.io:5001/api/v0')
-const StudentVerificationSystemAddress = "";
+const StudentVerificationSystemAddress = "0x938292a760EA13e6386Cd04F212350D025AA3C5e";
 
 export const CA = () => {
   const [name, setName] = useState(null);
@@ -24,7 +24,7 @@ export const CA = () => {
   }
 
   async function setStudent() {
-    if (typeof window.ethereum !== "undefined") {
+    if (window.ethereum) {
       await requestAccount();
       const studentData = `Student Data:\n Name: ${name}\n Registration Number: ${registrationNumber}\n Stream: ${stream}\n DOB: ${dob}\n Father Name: ${fname}\n Mother Name: ${mname}\n Result: ${result}\n Duration: ${startYear}-${endYear}`;
       const addStudentData = await client.add(studentData)
@@ -34,7 +34,7 @@ export const CA = () => {
       const signer = provider.getSigner();
       const contract = new ethers.Contract(
         StudentVerificationSystemAddress,
-        // StudentVerificationSystem.abi,
+        StudentVerificationSystem.abi,
         signer
       );
       const transaction = await contract.addStudent(registrationNumber, hash);
@@ -45,7 +45,6 @@ export const CA = () => {
   return (
     <div className="w-[450px] mx-auto my-24">
       <div className="p-4  bg-white rounded-lg border border-gray-200 shadow-md sm:p-6 lg:p-8 dark:bg-gray-800 dark:border-gray-700">
-        <form className="space-y-6" action="#">
           <h5 className="text-xl font-medium text-gray-900 dark:text-white text-center">
             College Portal
           </h5>
@@ -175,11 +174,10 @@ export const CA = () => {
           </div>
           <button
             onClick={setStudent}
-            className="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+            className="mt-4 w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
           >
             Add Student
           </button>
-        </form>
       </div>
     </div>
   );

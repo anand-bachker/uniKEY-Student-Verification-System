@@ -1,8 +1,9 @@
 import React from "react";
 import { useState } from "react";
 import { ethers } from "ethers";
-// import StudentVerificationSystem from "../artifacts/contracts/StudentVerificationSystem.sol/StudentVerificationSystem.json";
-const StudentVerificationSystemAddress = "";
+import StudentVerificationSystem from "../artifacts/contracts/StudentVerificationSystem.sol/StudentVerificationSystem.json";
+const StudentVerificationSystemAddress =
+  "0x938292a760EA13e6386Cd04F212350D025AA3C5e";
 
 export const MA = () => {
   const [collegeName, setCollegeName] = useState(null);
@@ -15,13 +16,13 @@ export const MA = () => {
   }
 
   async function setCollege() {
-    if (typeof window.ethereum !== "undefined") {
-      await requestAccount();
+    await requestAccount();
+    if (window.ethereum) {
       const provider = new ethers.providers.Web3Provider(window.ethereum);
       const signer = provider.getSigner();
       const contract = new ethers.Contract(
         StudentVerificationSystemAddress,
-        // StudentVerificationSystem.abi,
+        StudentVerificationSystem.abi,
         signer
       );
       const transaction = await contract.addCollege(
@@ -38,7 +39,6 @@ export const MA = () => {
     <div>
       <div className="w-[450px] mx-auto my-24">
         <div className="p-4  bg-white rounded-lg border border-gray-200 shadow-md sm:p-6 lg:p-8 dark:bg-gray-800 dark:border-gray-700">
-          <form className="space-y-6" action="#">
             <h5 className="text-xl font-medium text-gray-900 dark:text-white text-center">
               Admin Portal
             </h5>
@@ -102,12 +102,11 @@ export const MA = () => {
               />
             </div>
             <button
-              onClick={setCollege}
-              className="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-            >
-              Add College
-            </button>
-          </form>
+            onClick={setCollege}
+            className="mt-4 w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+          >
+            Add College
+          </button>
         </div>
       </div>
     </div>
