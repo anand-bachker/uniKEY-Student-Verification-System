@@ -1,6 +1,35 @@
 import React from "react";
+import { useState } from "react";
+import { ethers } from "ethers";
+// import StudentVerificationSystem from "../artifacts/contracts/StudentVerificationSystem.sol/StudentVerificationSystem.json";
+const StudentVerificationSystemAddress = "";
 
 export const Public = () => {
+  const [collegeUniqueID, setCollegeUniqueID] = useState(null);
+  const [studentRegistrationNumber, setStudentRegistrationNumber] =
+    useState(null);
+
+  const [data, setData] = useState(null);
+
+  const [registrationNumber, setRegistrationNumber] = useState(null);
+  const [hash, setHash] = useState(null);
+  const [verify, setVerify] = useState(null);
+  const [timestamp, setTimestamp] = useState(null);
+
+  async function fetchStudentDetails() {
+    const provider = new ethers.providers.Web3Provider(window.ethereum);
+    const contract = new ethers.Contract(
+      StudentVerificationSystemAddress,
+      // StudentVerificationSystem.abi,
+      provider
+    );
+    let Data = await contract.viewStudent(
+      collegeUniqueID,
+      studentRegistrationNumber
+    );
+    setData(Data);
+  }
+
   return (
     <div>
       <div className="w-[350px] mx-auto my-24">
@@ -20,6 +49,7 @@ export const Public = () => {
                 className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
                 placeholder="College Unique ID"
                 required
+                onChange={(e) => setCollegeUniqueID(e.target.value)}
               />
             </div>
             <div>
@@ -33,6 +63,7 @@ export const Public = () => {
                 className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
                 placeholder="Student Registration Number"
                 required
+                onChange={(e) => setStudentRegistrationNumber(e.target.value)}
               />
             </div>
             <button

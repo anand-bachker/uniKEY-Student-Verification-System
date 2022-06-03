@@ -1,31 +1,54 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { useState } from "react";
+import { ethers } from "ethers";
+import Logo from "../assets/logo.png";
+import Metamask from "../assets/metamask.png";
 
 export const Navbar = () => {
+  const [isWalletConnected, setIsWalletConnected] = useState(false);
+
+  const checkIfWalletIsConnected = async () => {
+    try {
+      if (window.ethereum) {
+        const accounts = await window.ethereum.request({
+          method: "eth_requestAccounts",
+        });
+        const account = accounts[0];
+        setIsWalletConnected(true);
+        console.log("Account Connected: ", account);
+      } else {
+        console.log("No Metamask detected");
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <nav className="bg-white border-gray-200 px-2 sm:px-4 py-2.5 rounded dark:bg-gray-800 opacity-90">
       <div className="container flex flex-wrap justify-between items-center mx-auto">
         <Link to="/" className="flex items-center">
           <img
-            src="data:image/png;base64,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"
+            src={Logo}
             className="mr-3 h-6 sm:h-9"
             alt="Flowbite Logo"
           />
           <span className="self-center text-xl font-semibold whitespace-nowrap dark:text-white">
-            UniKey
+            uniKEY
           </span>
         </Link>
         <div className="flex md:order-2">
           <button
-            // onClick={btnhandler}
+            onClick={checkIfWalletIsConnected}
             type="button"
             className=" flex flex-row justify-center items-centertext-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-3 md:mr-0 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
           >
             <div className="mr-2 w-[32px] h-[32px]">
-              <img src="MetaMask_Fox.svg.png" alt="" />
+              <img src={Metamask} alt="" />
             </div>
             <div className="flex justify-center items-center h-full text-white">
-              <div>Login</div>
+              <div>{isWalletConnected===true?"Connected":"Connect"}</div>
             </div>
           </button>
           <button

@@ -9,7 +9,7 @@ export const AppLink = () => {
           uniKEY: Student Verification System
         </h5>
         <p className="mb-5 text-base text-gray-500 sm:text-lg dark:text-gray-400">
-          UniKey is a student Verification system that allows anyone to verify the college identity of a student. 
+          uniKEY is a student Verification system that allows anyone to verify the college identity of a student. 
         </p>
         <p className="mb-5 text-base text-gray-500 sm:text-lg dark:text-gray-400">
           Download the app and start using it now. 
