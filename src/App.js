@@ -5,6 +5,7 @@ import { AboutUs } from "./mycomps/AboutUs";
 import { Footer } from "./mycomps/Footer";
 import { CA } from "./mycomps/CA";
 import { MA } from "./mycomps/MA";
+import { CL } from "./mycomps/CL";
 import { Public } from "./mycomps/Public";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
@@ -20,6 +21,7 @@ function App() {
           <Route path="public" element={<><Public /></>} />
           <Route path="admin" element={<><MA /></>} />
           <Route path="college" element={<><CA /></>} />
+          <Route path="college-list" element={<><CL /></>} />
         </Routes>
         <Footer />
       </Router>
