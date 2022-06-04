@@ -28,7 +28,8 @@ export const Public = () => {
     setHash(Data[1]);
     setVerify(Data[2]);
     setTimestamp(parseInt(Data[3]));
-    console.log(`\n Registration Number: ${registrationNumber}\n Hash: ${hash}\n Verify: ${verify}\n Timestamp: ${Date(timestamp*1000).toLocaleString()}`);
+    var date = new Date(timestamp*1000);
+    console.log(`\n Registration Number: ${registrationNumber}\n Hash: ${hash}\n Verify: ${verify}\n Timestamp: ${date.toDateString()}`);
   }
 
   return (
