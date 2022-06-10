@@ -11,8 +11,12 @@ import { CL } from "./mycomps/CL";
 import { Public } from "./mycomps/Public";
 import { Lost } from "./mycomps/Lost";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { GK } from "./mycomps/GK";
+import { Certificates } from "./mycomps/Certificates";
+import { OutPass } from "./mycomps/OutPass";
 
 function App() {
+  
   return (
     <div className="select-none">
       <Router>
@@ -27,6 +31,10 @@ function App() {
           <Route exact path="college/remove-student" element={<><RS /></>} />
           <Route exact path="college-list" element={<><CL /></>} />
           <Route exact path="public" element={<><Public /></>} />
+          <Route exact path="college/certificates" element={<><Certificates /></>} />
+          <Route exact path="college/gate-keeper" element={<><GK /></>} />
+          <Route exact path="college/out-pass" element={<><OutPass /></>} />
+
           <Route path="*" element={<><Lost /></>} />
         </Routes>
         <Footer />

@@ -6,7 +6,6 @@ import Metamask from "../assets/metamask.png";
 
 export const Navbar = () => {
   const [isWalletConnected, setIsWalletConnected] = useState(false);
-
   const checkIfWalletIsConnected = async () => {
     try {
       if (window.ethereum) {

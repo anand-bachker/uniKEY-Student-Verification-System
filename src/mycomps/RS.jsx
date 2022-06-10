@@ -3,7 +3,7 @@ import { useState } from "react";
 import { ethers } from "ethers";
 import StudentVerificationSystem from "../artifacts/contracts/StudentVerificationSystem.sol/StudentVerificationSystem.json";
 const StudentVerificationSystemAddress =
-  "0xb6C57b724A70ABccDB28aadEe7f060A242E8F127";
+  "0xE7aF8190bf5311E4f99CC60491650e38186d5cd2";
 
 export const RS = () => {
   const [registrationNumber, setRegistrationNumber] = useState(null);
@@ -37,7 +37,7 @@ export const RS = () => {
             Remove Student
           </h5>
           <div>
-            <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">
+            <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300 pt-2">
               Registration Number
             </label>
             <input
