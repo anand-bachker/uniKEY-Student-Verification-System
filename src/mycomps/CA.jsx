@@ -2,6 +2,8 @@ import React from "react";
 import { create } from 'ipfs-http-client'
 import { useState } from "react";
 import { ethers } from "ethers";
+import { initializeApp } from "firebase/app";
+import { getDatabase, ref, set } from "firebase/database";
 import StudentVerificationSystem from "../artifacts/contracts/StudentVerificationSystem.sol/StudentVerificationSystem.json";
 const client = create('https://ipfs.infura.io:5001/api/v0')
 const StudentVerificationSystemAddress = "0x224f1738e951291180afa7297Dc9F6c7B7bC7A4E";
@@ -23,6 +25,39 @@ export const CA = () => {
     await window.ethereum.request({ method: "eth_requestAccounts" });
   }
 
+  async function  stud (){
+    const firebaseConfig = {
+      apiKey: "AIzaSyDTJ_8yIfgI12Mf4H-me3SmyHemJ6M8_J0",
+      authDomain: "minorblockchain.firebaseapp.com",
+      databaseURL: "https://minorblockchain-default-rtdb.firebaseio.com",
+      projectId: "minorblockchain",
+      storageBucket: "minorblockchain.appspot.com",
+      messagingSenderId: "721147850216",
+      appId: "1:721147850216:web:481d55ff9084a6bb44c85d"
+    };
+    
+    // Initialize Firebase
+    const app = await initializeApp(firebaseConfig);
+    const db= await getDatabase(app);
+    set(ref(db,"/Students/0"+registrationNumber.toString()), {
+      name:name,
+      registrationNumber:registrationNumber,
+      stream:stream,
+      dob:dob,
+      fname:fname,
+      mname:mname,
+      result:result,
+      duration:4,   
+    })
+    .then(() => {
+      console.log("Document successfully written!");
+    })
+    .catch((error) => {
+      console.error("Error writing document: ", error);
+    });
+    
+  }
+
   async function setStudent() {
     if (window.ethereum) {
       await requestAccount();
@@ -39,7 +74,10 @@ export const CA = () => {
       );
       const transaction = await contract.addStudent(registrationNumber, hash);
       await transaction.wait();
+      await stud();
+      
     }
+
   }
 
   return (
