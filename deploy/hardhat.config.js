@@ -10,7 +10,7 @@ module.exports = {
     matic: {
       url: "https://matic-mumbai.chainstacklabs.com/",
       accounts: [process.env.PRIVATE_KEY],
-      gas:50000000
+      gas:500000
     }
   },
   etherscan: {
