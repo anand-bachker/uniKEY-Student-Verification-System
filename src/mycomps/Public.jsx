@@ -1,7 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import { ethers } from "ethers";
-import { OpeningModal } from "./OpeningModal";
+// import { OpeningModal } from "./OpeningModal";
 import StudentVerificationSystem from "../artifacts/contracts/StudentVerificationSystem.sol/StudentVerificationSystem.json";
 const StudentVerificationSystemAddress = "0x224f1738e951291180afa7297Dc9F6c7B7bC7A4E";
 
@@ -12,7 +12,7 @@ export const Public = () => {
   const [hash, setHash] = useState(null);
   const [verify, setVerify] = useState(null);
   const [timestamp, setTimestamp] = useState(null);
-  const [modalState, setModalState] = useState(false);
+  // const [modalState, setModalState] = useState(false);
   const [modalData, setModalData] = useState(null);
 
   async function fetchStudentDetails() {
@@ -39,12 +39,13 @@ export const Public = () => {
           verify: verify,
           timestamp: timestamp
         })
-        setModalState(true);
+        // setModalState(true);
+        window.open(modalData.hash, "_blank");
       }
       
   return (
     <div>
-      {modalState ? <OpeningModal ChangeModal={setModalState} ModalState={modalState} ModalData={modalData}/>: <></>}
+      {/* {modalState ? <OpeningModal ChangeModal={setModalState} ModalState={modalState} ModalData={modalData}/>: <></>} */}
       <div className="w-[350px] mx-auto my-24">
         <div className="p-4  bg-white rounded-lg border border-gray-200 shadow-md sm:p-6 lg:p-8 dark:bg-gray-800 dark:border-gray-700">
             <h5 className="text-xl font-medium text-gray-900 dark:text-white text-center">
